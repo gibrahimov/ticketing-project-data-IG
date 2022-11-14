@@ -77,7 +77,12 @@ public class ProjectServiceImpl implements ProjectService {
 
         Project project = projectRepository.findByProjectCode(code);
         project.setIsDeleted(true);
+
+        project.setProjectCode(project.getProjectCode() + "-" + project.getId());  // SP03-4
+
         projectRepository.save(project);
+
+
     }
 
     @Override
